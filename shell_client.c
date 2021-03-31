@@ -66,8 +66,7 @@ int main(int argc, char* argv[]){
 	TCP_Write_String(socket, comando);
 	//Recv_ACK(socket);
      
-	// Se espera por el comando
-	
+	// Envio de archivo
 	//filename = (char*)malloc(sizeof(char)*BUFSIZ);
 	filename = (char*)calloc(BUFSIZ,sizeof(char));
 	assert(filename != NULL);
@@ -87,7 +86,7 @@ int main(int argc, char* argv[]){
 
 	char cadena[MAX_LENGTH_STRING];
 	cat_archivo("archivo.c");
-	borrar_archivo("borrar.txt");
+	borrar_archivo("demo.c");
 	generar_nombre_archivo(MAX_LENGTH_STRING,cadena); 
 	printf("%s\n",cadena);
 	
