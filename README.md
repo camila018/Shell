@@ -1,9 +1,10 @@
 # Shell
 
-Hats el momento he fusionado los archivos de file_cliente, file_server,
+Hasta el momento he fusionado los archivos de file_cliente, file_server,
 basic_cliente, basic_server.
 
 para compilarlos archivos, uso los siguientes comandos:
+
 Servidor --> gcc shell_server.c tcp.c leercadena.c archivo.c -o shell_server
          --> ./shell_server 
 
