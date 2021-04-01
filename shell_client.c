@@ -21,8 +21,8 @@ int main(int argc, char* argv[]){
 
      
      	
-	if (argc != 4){
-	fprintf(stderr,"Uso: %s <host> <puerto> <filename>\n",argv[0]);
+	if (argc != 3){
+	fprintf(stderr,"Uso: %s <host> <puerto>\n",argv[0]);
 	return 1;
 	}
   
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
      while(1){
    
    
-     char *filename;
+     char *filename = "demo.c";
 
      pid_t pid, pid_temp;
      //leer cadena
@@ -72,8 +72,8 @@ int main(int argc, char* argv[]){
 	assert(filename != NULL);
 	TCP_Read_String(socket,filename,BUFSIZ); Send_ACK(socket);
 	printf("Archivo a recibir [%s]\n",filename);
-	free(filename);
-	filename = argv[3];
+	//free(filename);
+	//filename = argv[3];
 	TCP_Recv_File(socket, filename);
 	printf("Archivo recibido en archivo [%s]\n",filename);
 	
@@ -85,8 +85,8 @@ int main(int argc, char* argv[]){
 	//cat_archivo(filename);
 
 	char cadena[MAX_LENGTH_STRING];
-	cat_archivo("archivo.c");
-	borrar_archivo("demo.c");
+	cat_archivo(filename);
+	borrar_archivo(filename);
 	generar_nombre_archivo(MAX_LENGTH_STRING,cadena); 
 	printf("%s\n",cadena);
 	
