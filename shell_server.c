@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 
 	int socket, connfd;  
 	int puerto;
-	char *filename;
+	char *filename = "DEMO.c";
 	char ack[MAX_TCP_ACK] = {0};
 	
 
@@ -66,14 +66,18 @@ int main(int argc, char* argv[]){
 	}
         
         if (pid == 0){
+        
+        //Recibe comando
 	func(connfd);
-	//Send_ACK(socket);
+	Send_ACK(sockfd);
+	
+	//Envio del nombre del archivo
+	TCP_Write_String(connfd, filename); 
+	Recv_ACK(sockfd);
 	
 	//Envio del archivo
-	TCP_Write_String(connfd, filename); 
-//	Recv_ACK(connfd);
 	TCP_Send_File(connfd,filename);
-	
+	Send_ACK(sockfd);
 	
         break;
         }
