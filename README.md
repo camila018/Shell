@@ -11,7 +11,7 @@ Servidor --> gcc -c archivo.c leercadena.c
 
 cliente --> gcc -c archivo.c leercadena.c
         --> gcc shell_client.c tcp.c leercadena.o archivo.o -o shell_client
-        --> ./shell_client localhost 12358 demo.c
+        --> ./shell_client localhost 12358 
 
 
 
