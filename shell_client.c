@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
      while(1){
    
    
-     char *filename = "demo.c";
+     char *filename;
 
      pid_t pid, pid_temp;
      //leer cadena
@@ -64,25 +64,23 @@ int main(int argc, char* argv[]){
 	
 	//Envio del comando
 	TCP_Write_String(socket, comando);
-	//Recv_ACK(socket);
+	Recv_ACK(socket);
      
-	// Envio de archivo
-	//filename = (char*)malloc(sizeof(char)*BUFSIZ);
+	// Se espera a recibir el nombre del archvio
+	
 	filename = (char*)calloc(BUFSIZ,sizeof(char));
 	assert(filename != NULL);
-	TCP_Read_String(socket,filename,BUFSIZ); Send_ACK(socket);
+	TCP_Read_String(socket,filename,BUFSIZ); 
+	Send_ACK(socket);
 	printf("Archivo a recibir [%s]\n",filename);
-	//free(filename);
-	//filename = argv[3];
+	
+	// Recibo de archivo	
 	TCP_Recv_File(socket, filename);
 	printf("Archivo recibido en archivo [%s]\n",filename);
-	
-	TCP_Read_String(socket, filename, BUFSIZ);
-	//Send_ACK(socket);
+	Send_ACK(socket);
 
      
 	//Muestra por pantalla el archivo
-	//cat_archivo(filename);
 
 	char cadena[MAX_LENGTH_STRING];
 	cat_archivo(filename);
